@@ -47,7 +47,7 @@ def erreur_fixe(approx, exact, dt, T):
     exact = """solution exact"""
     approx = solve_euler_explicit(f, x0, t0, T, dt)
     return(abs(approx[1] - exact))
-# On peut tracer l'erreur en fonction du pas de temps dt
+# On peut tracer l'erreur en fonction du pas de temps dt (pour la convergence)
 ldt = []
 le =[]
 dt = """a préciser"""
@@ -77,7 +77,8 @@ def solve_heun(f, x0, t0, tf, dt):
         lt.append(t)
     return(lt, lx)
 # On refait la même chose que précédemment pour les erreurs.
-# On trace les deux méthodes sur le même graphe.
+# On peut tracer sur un même graphe les évolutions des erreurs (celles qui sont en log) pour comparer les convergences des deux résolutions numériques.
+# On trace les trois méthodes sur le même graphe.
 plt.plot(solve_euler_explicit(f, x0, t0, tf, dt)[0], solve_euler_explicit(f, x0, t0, tf, dt)[1], label='Méthode Euler explicite')
 plt.plot(solve_heun(f, x0, t0, tf, dt)[0], solve_heun(f, x0, t0, tf, dt)[1], label='Méthode Heun')
 plt.plot(solve_euler_explicit(f, x0, t0, tf, dt)[0], """solution exacte""", label='Solution exacte')
